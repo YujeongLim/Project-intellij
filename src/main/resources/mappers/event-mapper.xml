@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="eventMapper">
+
+	<resultMap id="eventResultSet" type="Event">
+		<id property="eventCode" column="EVENT_CODE"/>
+		<result property="eventName" column="EVENT_NAME"/>
+		<result property="eventDetail" column="EVENT_DETAIL"/>
+		<result property="eventAddDate" column="EVENT_ADD_DATE"/>
+		<result property="eventPhoto" column="EVENT_PHOTO"/>
+	</resultMap>
+	
+	
+	<select id="selectList" resultMap="eventResultSet">
+		SELECT *
+		FROM TBL_EVENT
+	</select>
+	
+	<select id="selectEvent" parameterType="int" resultMap="eventResultSet">
+		SELECT *
+		FROM TBL_EVENT where EVENT_CODE = #{eno}
+	</select>
+    
+	
+	<insert id="insertEvent" parameterType="Event">
+		insert into tbl_event
+		values(#{eventCode}, #{eventName}, #{eventDetail}, #{eventAddDate}, #{eventPhoto})
+	</insert>
+	
+	<update id="updateEvent" parameterType="Event">
+		update tbl_event
+		set EVENT_NAME=#{eventName},EVENT_DETAIL=#{eventDetail}, EVENT_ADD_DATE=#{eventAddDate}, EVENT_PHOTO=#{eventPhoto}
+		where EVENT_CODE=#{eventCode}
+	</update>
+
+	
+	<delete id="deleteEvent" parameterType="Integer">
+		delete tbl_event
+		where event_code=#{eno}
+	</delete>
+	
+	
+</mapper>

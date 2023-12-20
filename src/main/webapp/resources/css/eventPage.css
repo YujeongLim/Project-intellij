@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrap {
+    position: relative;
+    top: 0;
+    left: 0;
+    /* 자식에 float 쓰면 부모가 높이값을 상실해서 이거씀 ㅋ */
+    overflow: hidden;
+    height: 90vh;
+}
+
+.e-title{
+	font-size: 24px;
+    color: #fff;
+    margin-bottom: 10px;
+    height: 4vh;
+}
+
+.e-detail{
+	font-size: 18px;
+    color: #fff;    
+    margin: 10px 350px;
+    height: 6vh;
+}
+
+.slide-container {
+    width: 300vw; 
+    /* 꽉채운 브라우저 사이즈 이미지가 3개 있으므로 100vh*3이 된다 */
+    height: 90vh;
+    transition: transform 1s;
+}
+
+.slide-box {
+    width: 100vw;
+    height: 100vh;
+    /* 뷰포트 화면에 꽉 채움 */
+    float: left;
+    text-align: center;
+}
+
+.slide-box img{
+    width: 1300px;
+    height: 660px;
+}
+
+
+button {
+    border: none;
+    outline: none;
+}
+
+.btn-box {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.slide {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 5px;
+    background-color: #fff;
+}
+
+.slide.active {
+    background-color: #95171b;
+    transform: scale(1.2);
+}
+
+.arrow-btn {
+    position: absolute;
+    background-color: orange;
+    width: 50px;
+    height: 50px;
+    top: calc(50% - 25px);
+}
+
+.slide-prev {
+    left: 10px;
+}
+
+.slide-next {
+    right: 10px;
+}

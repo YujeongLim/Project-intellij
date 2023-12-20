@@ -1,0 +1,35 @@
+
+.mem_src{
+    padding: 20px;
+}
+  
+.mem_src span{
+margin: 10px;
+}
+
+.mem_src input{
+    margin-right: 10px;
+    margin-left: 4px;
+    padding: 3px;
+}
+
+.rs_btn{
+    cursor: pointer;
+}
+
+.src_btn{
+    background-color: black;
+    color: white;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.back_btn{
+	margin-top: 20px;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.fr{
+	float: right;
+}

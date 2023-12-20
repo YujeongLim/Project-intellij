@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+/* 정가운데 메뉴 */
+.nav {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    z-index: 10;
+}
+
+.nav li a::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #000;
+    overflow: hidden;
+    width: 0;
+}
+
+.nav li a:hover:before {
+    color: rgb(109, 41, 41);
+    transition: 0.5s;
+    width: 100%;
+}
+
+
+.nav a {
+    padding: 10px;
+    font-size: 4rem;
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+}
+/* 아무것도 클릭되지 않을 경우 보여지는 사진 */
+
+
+.logo{
+	display: inline-block;
+    margin: 13px 180px;
+    font-size: 42px;
+}
+}

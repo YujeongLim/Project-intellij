@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="qnaMapper">
+	<resultMap id="qnaResultSet" type="Qna">
+			<id column="qna_no" property="qnaNo"/>
+			<result column="qna_title" property="qnaTitle"/>
+			<result column="qna_writer" property="qnaWriter"/>
+			<result column="qna_content" property="qnaContent"/>
+			
+			<result column="origin_name" property="originName"/>
+			<result column="change_name" property="changeName"/>
+			<result column="count" property="count"/>
+			<result column="create_date" property="createDate"/>
+			<result column="status" property="status"/>
+	</resultMap>
+	
+	
+
+	<insert id="insertQna" parameterType="Qna">
+		INSERT INTO TBL_QNA
+		VALUES
+		(SEQ_QNO.NEXTVAL, #{qnaTitle}, #{qnaContent}, #{qnaWriter}, #{originName},
+		 #{changeName}, DEFAULT, SYSDATE, DEFAULT)
+		
+	</insert>
+	
+	
+</mapper>

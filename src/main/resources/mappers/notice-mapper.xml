@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="noticeMapper">
+	<resultMap id="noticeResultSet" type="Notice">
+			<id column="notice_no" property="noticeNo"/>
+			<result column="notice_title" property="noticeTitle"/>
+			<result column="notice_writer" property="noitceWriter"/>
+			<result column="notice_content" property="noticeContent"/>
+			
+			<result column="origin_name" property="originName"/>
+			<result column="change_name" property="changeName"/>
+			<result column="count" property="count"/>
+			<result column="create_date" property="createDate"/>
+			<result column="status" property="status"/>
+	</resultMap>
+	
+	
+	
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*) 
+		FROM TBL_NOTICE 
+		WHERE STATUS = 'Y'
+	</select>
+	<select id="selectList" resultMap="noticeResultSet">
+		SELECT *
+		FROM TBL_NOTICE
+		WHERE STATUS = 'Y'
+		ORDER BY NOTICE_NO DESC
+	</select>	
+	<insert id="insertNotice" parameterType="Notice">
+		INSERT INTO TBL_NOTICE
+		VALUES
+		(SEQ_NNO.NEXTVAL, #{noticeTitle}, #{noticeContent}, #{noticeWriter}, #{originName},
+		 #{changeName}, DEFAULT, SYSDATE, DEFAULT)
+		
+	</insert>
+	<update id="increaseCount" parameterType="_int">
+		UPDATE TBL_NOTICE
+		SET COUNT = COUNT + 1
+		WHERE NOTICE_NO = #{nno} AND STATUS='Y'
+	</update>
+	<select id="selectNotice" resultMap="noticeResultSet" parameterType="_int">
+		SELECT *
+		FROM TBL_NOTICE
+		WHERE NOTICE_NO = #{nno} AND STATUS='Y'
+	</select>
+	<update id="updateNotice" parameterType="Notice">
+		UPDATE TBL_NOTICE
+		SET NOTICE_TITLE=#{noticeTitle}, NOTICE_CONTENT=#{noticeContent}, ORIGIN_NAME=#{originName}, CHANGE_NAME=#{changeName}
+		WHERE NOTICE_NO=#{noticeNo}
+		AND STATUS='Y'
+	</update>
+	<update id = "deleteNotice" parameterType="_int">
+		UPDATE TBL_NOTICE
+		SET STATUS= 'N'
+		WHERE NOTICE_NO=#{nno} AND STATUS='Y'
+
+	</update>
+	
+	
+	<select id="selectTopList" resultMap="noticeResultSet">
+		<![CDATA[
+		SELECT *
+		FROM (
+				SELECT *
+				FROM TBL_NOTICE
+				WHERE STATUS = 'Y'
+				ORDER BY COUNT DESC
+			  )
+		WHERE ROWNUM <= 5
+		]]>
+	</select>
+	
+</mapper>

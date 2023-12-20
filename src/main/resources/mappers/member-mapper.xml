@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="memberMapper">
+	<resultMap id="memberResultSet" type="Member">
+		<id property="memCode" column="MEM_CODE"/>
+		<result property="memAdmin" column="MEM_ADMIN"/>
+		<result property="memName" column="MEM_NAME"/>
+		<result property="memBirth" column="MEM_BIRTH"/>
+		<result property="gender" column="GENDER"/>
+		<result property="memId" column="MEM_ID"/>
+		<result property="memPwd" column="MEM_PWD"/>
+		<result property="memPhone" column="MEM_PHONE"/>
+		<result property="memAdrr" column="MEM_ADRR"/>
+		<result property="memEmail" column="MEM_EMAIL"/>
+		<result property="memAccdate" column="MEM_ACC_DATE"/>
+		<result property="memOut" column="MEM_OUT"/>
+	</resultMap>
+	
+	<resultMap id="memberResultSet2" type="Member2">
+		<id property="memCode" column="MEM_CODE"/>
+		<result property="memAdmin" column="MEM_ADMIN"/>
+		<result property="memName" column="MEM_NAME"/>
+		<result property="memBirth" column="MEM_BIRTH"/>
+		<result property="gender" column="GENDER"/>
+		<result property="memId" column="MEM_ID"/>
+		<result property="memPwd" column="MEM_PWD"/>
+		<result property="memPhone" column="MEM_PHONE"/>
+		<result property="memAdrr" column="MEM_ADRR"/>
+		<result property="memEmail" column="MEM_EMAIL"/>
+		<result property="memAccdate" column="MEM_ACC_DATE"/>
+		<result property="memOut" column="MEM_OUT"/>
+	</resultMap>
+	
+	<select id="selectList" resultMap="memberResultSet">
+		SELECT *
+		FROM TBL_MEMBER
+	</select>
+	
+	<select id="selectMember" parameterType="int" resultMap="memberResultSet2">
+		SELECT *
+		FROM TBL_MEMBER where MEM_CODE = #{mno}
+	</select>
+    
+	<select id="loginMember" parameterType="Member" resultMap="memberResultSet">
+		
+		select * from tbl_member 
+		where MEM_ID=#{memId} and MEM_OUT='N'  <!-- 회원탈퇴 안하는 경우 -->
+	</select>
+	<insert id="insertMember" parameterType="Member">
+		insert into tbl_member
+		values(#{memCode}, default, #{memName}, #{memBirth}, #{gender}, #{memId}, #{memPwd}, #{memPhone},#{memAdrr},#{memEmail},sysdate, default)
+	</insert>
+	
+	<update id="updateMember" parameterType="Member">
+		update member
+		set mem_birth=#{memBirth},gender=#{gender},mem_email=#{memEmail}, mem_phone=#{memPhone}, mem_address=#{memAddress}
+		where mem_code=#{memCode}
+	</update>
+	<select id ="idCheck" parameterType="string" resultType="_int">
+		select count(*)
+		from tbl_member
+		where MEM_ID=#{memId}
+	
+	</select>
+	<select id="forgetId" parameterType="Member" resultMap="memberResultSet">
+	select MEM_ID
+    from tbl_member 
+	where MEM_NAME=#{memName} and MEM_EMAIL=#{memEmail} 	
+	</select>
+	
+	<select id="forgetPwd" parameterType="Member" resultMap="memberResultSet">
+	select MEM_PWD
+    from tbl_member 
+	where MEM_NAME=#{memName} and MEM_ID=#{memId}  and MEM_OUT='N'	
+	</select> 
+	
+	<delete id="deleteMember" parameterType="string">
+		update member
+		set mem_out='Y'
+		where mem_id=#{memId}
+	</delete>
+	
+	<delete id="deleteMember2" parameterType="Integer">
+		delete from tbl_member
+		where mem_code=#{mno}
+	</delete>
+	
+	<update id="update" parameterType="Member2">
+		update tbl_member
+		set mem_name=#{memName},mem_birth=#{memBirth},gender=#{gender},mem_email=#{memEmail}, mem_phone=#{memPhone}, mem_adrr=#{memAdrr}
+		where mem_code=#{memCode}
+	</update>
+	
+</mapper>

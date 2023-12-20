@@ -1,0 +1,19 @@
+.fr{
+  float: right;
+  margin-right: 20px;
+}
+
+.btn_box{
+  width: 100px;
+  padding: 10px;
+  margin: 10px 2px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+table>input{
+	width: 80px;
+}
+

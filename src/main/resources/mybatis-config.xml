@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+  
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="com.uni.ljss.member.model.dto.Member" alias="Member"/>
+
+		<typeAlias type="com.uni.ljss.notice.model.dto.Notice" alias="Notice"/>
+		<typeAlias type="com.uni.ljss.qna.model.dto.Qna" alias="Qna"/>
+
+
+		<typeAlias type="com.uni.ljss.product.model.dto.Product" alias="Product"/>
+
+		<typeAlias type="com.uni.ljss.membermgt.model.dto.Member2" alias="Member2"/>
+		<typeAlias type="com.uni.ljss.event.model.dto.Event" alias="Event"/>
+
+	</typeAliases>
+
+
+	<mappers>
+		<mapper resource="/mappers/member-mapper.xml"/>
+		<mapper resource="/mappers/event-mapper.xml"/>
+
+		<mapper resource="/mappers/notice-mapper.xml"/>
+		<mapper resource="/mappers/qna-mapper.xml"/>
+
+		<mapper resource="/mappers/product-mapper.xml"/>
+
+	</mappers>
+</configuration>

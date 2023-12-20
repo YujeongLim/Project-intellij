@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="productMapper">
+	<resultMap id="productResultSet" type="Product">
+		<id property="proCode" column="PRO_CODE"/>
+		<result property="proName" column="PRO_NAME"/>
+		<result property="proPrice" column="PRO_PRICE"/>
+		<result property="cateCode" column="CATE_CODE"/>
+		<result property="proSize" column="PRO_SIZE"/>
+		<result property="proStock" column="PRO_STOCK"/>
+		<result property="proEntDate" column="PRO_ENT_DATE"/>
+		<result property="proStatus" column="PRO_STATUS"/>
+		<result property="proImg1" column="PRO_IMG1"/>
+		<result property="proImg2" column="PRO_IMG2"/>
+		
+
+		
+	</resultMap>
+	<!-- 상품 리스트 기능 전체 조회-->
+	<select id="selectList"  resultMap="productResultSet">
+		
+		select*from tbl_product
+		where pro_status='Y'
+		
+	</select>
+	
+	<select id="selectListByOuter"  resultMap="productResultSet">
+		
+		select*from tbl_product
+		where pro_status='Y'and cate_code='1'
+		
+	</select>
+	<select id="selectListByTop"  resultMap="productResultSet">
+		
+		select*from tbl_product
+		where pro_status='Y'and cate_code='2'
+		
+	</select>
+	<select id="selectListByBottom"  resultMap="productResultSet">
+		
+		select*from tbl_product
+		where pro_status='Y'and cate_code='3'
+		
+	</select>
+	<select id="selectListByShoes"  resultMap="productResultSet">
+		
+		select*from tbl_product
+		where pro_status='Y'and cate_code='4'
+		
+	</select>
+	<select id="selectListByAcc"  resultMap="productResultSet">
+		
+		select*from tbl_product
+		where pro_status='Y'and cate_code='5'
+		
+	</select>
+	
+	<!-- 상품 상세조회 -->
+	<select id="selectProduct" parameterType="Product" resultMap="productResultSet">
+		select *from tbl_product
+		where PRO_CODE= #{ proCode } and pro_status='Y'
+	</select>
+	
+	
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*) 
+		FROM tbl_product 
+		where pro_status='Y' 
+	</select>
+	<update id="deleteProduct" parameterType="Product">
+		UPDATE TBL_PRODUCT
+		SET PRO_STATUS= 'N'
+		WHERE PRO_CODE=#{proCode} AND PRO_STATUS='Y'
+		
+	</update>
+	<insert id="insertProduct" parameterType="Product">
+		INSERT INTO TBL_PRODUCT
+		VALUES
+		(PRO_CODE.NEXTVAL,#{proName}, #{proPrice},#{cateCode},#{proSize},#{proStock}, SYSDATE,
+		  DEFAULT, #{proImg1},#{proImg2})
+		
+	</insert>
+	<update id="updateProduct" parameterType="Product">
+	    UPDATE TBL_PRODUCT
+		SET PRO_NAME=#{proName}, PRO_PRICE=#{proPrice},CATE_CODE=#{cateCode}, PRO_STOCK=#{proStock},PRO_SIZE=#{proSize}, PRO_IMG1=#{proImg1},PRO_IMG2=#{proImg2}
+		WHERE PRO_CODE=#{proCode}
+		AND PRO_STATUS='Y'
+	</update>
+	
+	
+	
+</mapper>

@@ -1,0 +1,38 @@
+
+.bnt_box{
+  margin: 10px 0;
+}
+
+.add_btn{
+  background-color: rgb(36, 131, 255);
+  color: #fff;
+  border-radius: 6px;
+  padding: 5px;
+  font-size: 13px;
+}
+
+.delete_btn a{    
+  background-color: #ddd;
+  color: #444 !important;
+  border-radius: 6px;
+  padding: 6px;
+}
+
+table{
+  width: 100%;
+  border: 1px solid #000;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 13px;
+}
+
+tr, th, td{
+  border: 1px solid #000;
+}
+
+/*뒤로가기 버튼*/
+.back_btn{
+	margin-top: 20px;
+	font-size: 20px;
+	cursor: pointer;
+}

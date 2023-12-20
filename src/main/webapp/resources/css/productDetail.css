@@ -1,0 +1,322 @@
+@charset "UTF-8";
+
+*{
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+button {cursor:pointer; border:0;}
+
+.clearfix::after{
+    display: block; 
+    content : ""; 
+    clear: both;
+}
+
+
+
+
+#container{
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 1200vh;
+}
+
+#header{
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 2%;
+    z-index: 100;
+}
+
+/* 햄버거 */
+html,body {width: 100%; overflow-x: hidden; overflow-y: auto;}
+
+.cate_btn{
+    position: absolute;
+    top: 24px;
+    left: 15px;
+    z-index: 1000;
+} 
+
+input[id="hamburger"] {
+  display: none;
+}
+input[id="hamburger"] + label {
+  display: block;    
+  width: 40px;
+  height: 28px;
+  position: relative;
+  cursor: pointer;
+}
+input[id="hamburger"] + label span {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  border-radius: 30px;
+  background: #797979;
+  transition: all 0.35s;
+}
+input[id="hamburger"] + label span:nth-child(1) {
+  top: 0;
+}
+input[id="hamburger"] + label span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+input[id="hamburger"] + label span:nth-child(3) {
+  bottom: 0;
+}
+input[id="hamburger"]:checked + label {
+  z-index: 99;
+}
+input[id="hamburger"]:checked + label span {
+  background: #797979;
+}
+input[id="hamburger"]:checked + label span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+input[id="hamburger"]:checked + label span:nth-child(2) {
+  opacity: 0;
+}
+input[id="hamburger"]:checked + label span:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+/* 여기까지 */
+
+/* 카테고리 */
+.cate_box {
+    /* 백그라운드 설정, 너비 220px , 높이 300px , 마진 상단값 10px , 폰트컬러 흰색 , 텍스트 가운데 정렬 ,폰트사이즈 30px */
+    position: relative;
+    background-color: #00000098;
+    width: 300px;
+    height: 100vh;
+    padding: 30px;
+    display: none;
+}
+
+.cate_box p {
+    position: absolute;
+    top: 140px;
+    left: 32px;
+    color: #fff;
+    font-size: 24px;
+}
+
+.cate_box2{     
+    position: absolute;
+    top: 240px;
+    left: 24px;
+    color: #fff;
+    font-size: 22px;
+}
+
+.cate_box2 li{
+    padding: 10px;
+}
+
+.cate_box2 li a:hover{
+    color:#6f0000;
+}
+
+.adm_menu{
+    position: absolute;
+    bottom: 120px;
+    left: 24px;
+    color: #fff;
+    font-size: 18px;
+}
+.adm_menu li{
+    padding: 10px 0;
+}
+
+
+
+/* 검색창 */
+#header .search_box{   
+    position: absolute;
+    top: -5px;
+    right: 420px;
+    margin-top: 30px;
+    margin-right: 20px;
+    font-size: 16px;
+    padding-right: 36px;
+    text-align: right;
+    width: 250px;
+    height: 30px;
+    border: 2px solid #666666;
+}
+
+/* 돋보기 버튼 */
+#header button{
+    position: absolute;    
+    top: 28px;
+    right: 444px;
+    background: none;
+}
+
+/* 로그인~컨택 */
+#header .gnb{
+    position: absolute;
+    top: -6px;
+    right: 3px;
+    margin-right: 30px;
+    margin-top: 33px;
+}
+
+#header .gnb li{
+    list-style: none;
+    float: left;
+}
+
+#header .gnb a{
+    padding: 10px;
+    color: #919191;
+    font-size: 18px;
+}
+
+#header .gnb a:hover{
+    color: #9c0000
+}
+
+.signbox{
+    width: 100%;
+    height:0.5%;
+    background-color:rgb(91, 31, 31);
+}
+.pdetail{
+  margin-top: 100px;;
+  margin-left: 70px;;
+}
+
+.pcontent{
+  float:right;
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: 50px;
+}
+.line1{
+  border-bottom: 0.5px solid #827b7b; 
+  width: 100%; 
+  margin-top: 30px;
+}
+.pprice{
+  margin-top: 30px;
+}
+.line2{
+  border-bottom: 0.5px solid #827b7b; 
+  width: 100%; 
+  margin-top: 30px;
+}
+.psize{
+  margin-top: 30px;
+}
+.line3{
+  border-bottom: 0.5px solid #827b7b; 
+  width: 100%; 
+  margin-top: 30px;
+}
+.total{
+  margin-left: 200px;
+}
+.totalPrice{
+  margin-top: 30px;
+}
+.addcart{
+  margin-top: 200px;
+}
+
+.addcart{
+   
+  width: 40%;
+  height: 60px;
+  margin-top: 100px;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #131a1f;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+
+}
+.addcart:hover {
+  background-color: rgb(197, 73, 73);
+}
+.buy{
+  width: 40%;
+  height: 60px;
+  margin-top: 100px;
+  margin-left: 80px;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #131a1f;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+}
+.buy:hover{
+  background-color: rgb(197, 73, 73);
+
+}
+.pimg{
+	 width:50%;
+	 height: 50%
+}
+.btn-primary {
+    width: 40%;
+    height: 50px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #131a1f;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+
+.btn-primary:hover {
+    background-color: rgb(197, 73, 73);
+}
+
+
+.btn-danger{
+    width: 40%;
+    height: 50px;
+    margin-top: 40px;
+    margin-left: 100px;
+    margin-bottom: 50px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #131a1f;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+.btn-danger:hover {
+    background-color: rgb(197, 73, 73);
+}
+
